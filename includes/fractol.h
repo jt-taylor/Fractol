@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:10:50 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/09 14:54:35 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/10 17:09:46 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,26 @@
 ** Structures
 */
 
-typedef			s_minilibx
+typedef struct	g_mlx_image
+{
+	void			*image_ptr;
+	char			*data_start;
+	int				bpp;
+	int				size_line;
+	int				endian;
+}				t_mlx_image;
+
+typedef struct	s_minilibx
 {
 	void			*mlx_ptr;
 	void			*window_ptr;
-	void			*img_ptr;
-	void			*img_data_ptr;
 }				t_minilibx;
 
-typedef			s_fractol
+typedef struct	s_fractol
 {
 	t_minilibx		mlx;
-
+	t_mlx_image		img;
+	int				fractol_opt;
 }				t_fractol;
 
 #endif
