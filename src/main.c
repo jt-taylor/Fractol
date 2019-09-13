@@ -6,11 +6,17 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:09:53 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/10 17:20:58 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/12 17:20:14 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+/*
+** used with strcmp to select which fractol to 'run'
+** last string must be "" --> stops the strcmp loop from comparing
+**		data from outside the bounds of the array
+*/
 
 char		*g_fractol_list[30] =
 {
@@ -20,6 +26,10 @@ char		*g_fractol_list[30] =
 	"test-me",
 	""
 };
+
+/*
+** make a usage message 
+*/
 
 /*
 ** The constraints are as follows:
@@ -47,6 +57,7 @@ static void		fractol_init_mlx(t_fractol *fractol, char *window_name)
 	fractol->mlx.window_ptr = mlx_new_window(fractol->mlx.mlx_ptr, WINDOW_SIZE,
 			window_name);
 	fractol->img.image_ptr = mlx_new_image(fractol->mlx.mlx_ptr, WINDOW_SIZE);
+	//do we need to malloc the data ptr >?
 	fractol->img.data_start = mlx_get_data_addr(fractol->img.image_ptr,
 			&fractol->img.bpp, &fractol->img.size_line, &fractol->img.endian);
 }
@@ -93,8 +104,26 @@ int		main(int ac, char **argv)
 		//if not in array error;
 		fractol->fractol_opt = fractol_select(argv[1]);
 		//testing
+		// take the color option romt
 		ft_printf("fractol select option == %d\n", fractol->fractol_opt);
 	}
 	fractol_init_mlx(fractol, argv[1]);
+	//mlx_draw(); --> use mlx_image() to replace this
+	//testing
+	int	x = 0;
+	int	y = 0;
+	while (x < 500)
+	{
+		y = -1;
+		while (++y < 500)
+			ft_mlx_img_pixel_put(fractol, x, y);
+		x++;
+	}
+	ft_mlx_img_pixel_put(fractol, 50, 50);
+	ft_mlx_img_pixel_put(fractol, 51, 50);
+	ft_mlx_img_pixel_put(fractol, 50, 51);
+	ft_mlx_img_pixel_put(fractol, 51, 51);
+	mlx_put_image_to_window(fractol->mlx.mlx_ptr, fractol->mlx.window_ptr, fractol->img.image_ptr, 0, 0);
+	mlx_loop(fractol->mlx.mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/16 19:30:49 by jtaylor           #+#    #+#              #
-#    Updated: 2019/09/10 16:26:31 by jtaylor          ###   ########.fr        #
+#    Updated: 2019/09/12 16:46:15 by jtaylor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ INCLUDES = -I ./libft/includes
 INCLUDES += -I ./includes
 INCLUDES += -I $(MINILIBX_HEADER_PATH)
 
-SRC_FILE = main.c
+SRC_FILE = main.c \
+				fractol_pixel_put.c
 SRC = $(addprefix ./src/, $(SRC_FILE))
 
 .PHONY = all clean fclean re
@@ -53,7 +54,7 @@ fsan :
 	@make -C ./libft
 	@make -C ./minilibx_macos
 	@echo "\tBuilding $(NAME) executable\n"
-	gcc $(FLAGS) $(FSANITIZE) $(SRC) $(FRAMEWORK) $(LINKED_LIB) $(INCLUDES) ./libft/libft.a ./libft/ft_printf/libftprintf.a -o $(NAME)
+	gcc $(FLAGS) $(DEBUG_FLAG) $(FSANITIZE) $(SRC) $(FRAMEWORK) $(LINKED_LIB) $(INCLUDES) ./libft/libft.a ./libft/ft_printf/libftprintf.a -o $(NAME)
 
 mlx_made :
 	tar -xvf minilibx.tar
