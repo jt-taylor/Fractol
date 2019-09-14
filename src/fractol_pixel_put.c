@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:08:22 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/13 20:58:23 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/13 21:44:36 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		ft_mlx_img_pixel_put(t_fractol *f, int x_cord, int y_cord)
 	int		mult;
 
 	mult = 255 / f->frac.iterations;
-	off = (x_cord + (y_cord * 500)) * 4;
+	off = (x_cord + (y_cord * WIDTH)) * 4;
 	if (f->frac.current_iteration == 0)
 	{
 		f->img.data_start[off] = 0x00;

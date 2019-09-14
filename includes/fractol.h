@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:10:50 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/13 20:46:22 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/13 21:42:08 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 /*
 ** macros
 */
-# define WINDOW_SIZE 500, 500
-# define WIDTH 500
-# define HEIGHT 500
+# define WINDOW_SIZE 1000, 1000
+# define WIDTH 1500
+# define HEIGHT 1000
 
 /*
 ** Structures
