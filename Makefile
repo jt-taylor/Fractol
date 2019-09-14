@@ -6,7 +6,7 @@
 #    By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/16 19:30:49 by jtaylor           #+#    #+#              #
-#    Updated: 2019/09/13 13:41:37 by jtaylor          ###   ########.fr        #
+#    Updated: 2019/09/13 19:58:15 by jtaylor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ INCLUDES += -I $(MINILIBX_HEADER_PATH)
 
 SRC_FILE = main.c \
 				fractol_pixel_put.c \
-				fractol_basic.c
+				fractol_basic.c \
+				loops.c
 SRC = $(addprefix ./src/, $(SRC_FILE))
 
 .PHONY = all clean fclean re

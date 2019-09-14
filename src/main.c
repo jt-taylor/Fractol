@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:09:53 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/13 15:16:10 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/13 20:18:59 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@
 
 char		*g_fractol_list[30] =
 {
-	"test",
+	"mandlebrot",
 	"test1",
 	"test2",
 	"test-me",
 	""
 };
+
+t_fractol_loops	*g_fractol_loops[] =
+{
+	mandlebrot,
+	how_did_you_get_here,
+	how_did_you_get_here,
+	how_did_you_get_here,
+	how_did_you_get_here,
+};
+
+
 
 /*
 ** make a usage message 
@@ -117,9 +128,8 @@ int		main(int ac, char **argv)
 	if (ac == 2)
 	{
 		fractol->fractol_opt = fractol_select(argv[1]);
-		//testing
-		// take the color option romt
-		ft_printf("fractol select option == %d\n", fractol->fractol_opt);
+		if (fractol->fractol_opt > (int)sizeof(g_fractol_loops) / 8)
+			how_did_you_get_here(fractol, 0);
 	}
 	else
 		fractol_usage_message();

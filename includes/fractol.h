@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:10:50 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/13 15:34:11 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/13 20:46:22 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,20 @@ typedef struct	s_fractal_data
 	double			z_2irat;
 }				t_fractal_data;
 
+typedef struct	s_color
+{
+	char			red;
+	char			green;
+	char			blue;
+	int				depth_mult;
+}				t_color;
+
 typedef struct	s_fractol
 {
 	t_minilibx		mlx;
 	t_mlx_image		img;
 	t_fractal_data	frac;
+	t_color			color;
 	int				fractol_opt;
 }				t_fractol;
 
@@ -82,4 +91,9 @@ typedef struct	s_fractol
 void		ft_mlx_img_pixel_put(t_fractol *f, int x_cord, int y_cord);
 void				draw_fractol(t_fractol *f);
 
+typedef int		t_fractol_loops(t_fractol *f, int x);
+extern t_fractol_loops	*g_fractol_loops[];
+
+int		mandlebrot(t_fractol *f, int x);
+int		how_did_you_get_here(t_fractol *f, int x);
 #endif
