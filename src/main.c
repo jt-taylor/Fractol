@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:09:53 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/13 21:32:22 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/14 17:43:26 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 char		*g_fractol_list[30] =
 {
 	"mandlebrot",
-	"test1",
+	"julia",
 	"test2",
 	"test-me",
 	""
@@ -30,6 +30,7 @@ char		*g_fractol_list[30] =
 t_fractol_loops	*g_fractol_loops[] =
 {
 	mandlebrot,
+	julia,
 	how_did_you_get_here,
 	how_did_you_get_here,
 	how_did_you_get_here,
@@ -122,9 +123,9 @@ int		main(int ac, char **argv)
 {
 	t_fractol	*fractol;
 
-	if (!(fractol = (t_fractol *)malloc(sizeof(t_fractol))))
-		//exit malloc error
-		;
+	//i really don't know why it breaks but i gotta find it
+	if (!(fractol = (t_fractol *)malloc(sizeof(t_fractol) * 3)))
+		exit(3);
 	if (ac == 2)
 	{
 		fractol->fractol_opt = fractol_select(argv[1]);
@@ -134,8 +135,11 @@ int		main(int ac, char **argv)
 	else
 		fractol_usage_message();
 	fractol_init_mlx(fractol, argv[1]);
+	init_fractol_options(fractol);
 	draw_fractol(fractol);
 	mlx_put_image_to_window(fractol->mlx.mlx_ptr, fractol->mlx.window_ptr, fractol->img.image_ptr, 0, 0);
+	mlx_key_hook(fractol->mlx.window_ptr, fractol_keypress, fractol);
+	mlx_mouse_hook(fractol->mlx.window_ptr, fractol_mousepress, fractol);
 	mlx_loop(fractol->mlx.mlx_ptr);
 	return (0);
 }

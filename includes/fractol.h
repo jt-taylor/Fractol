@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:10:50 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/13 21:42:08 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/14 17:42:14 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 ** macros
 */
 # define WINDOW_SIZE 1000, 1000
-# define WIDTH 1500
-# define HEIGHT 1000
+# define WIDTH 500
+# define HEIGHT 500
 
 /*
 ** Structures
@@ -45,9 +45,6 @@ typedef struct	s_minilibx
 
 typedef struct	s_fractal_data
 {
-	int		type;
-	int		current_iteration;
-	int		iterations;
 	// 4 corners that make the boundry of the dispaly
 	double			min_real;
 	double			max_real;
@@ -66,6 +63,10 @@ typedef struct	s_fractal_data
 	double			z_irat;
 	double			z_2real;
 	double			z_2irat;
+	double			zoom;
+	int		type;
+	int		current_iteration;
+	int		iterations;
 }				t_fractal_data;
 
 typedef struct	s_color
@@ -96,4 +97,8 @@ extern t_fractol_loops	*g_fractol_loops[];
 
 int		mandlebrot(t_fractol *f, int x);
 int		how_did_you_get_here(t_fractol *f, int x);
+void	init_fractol_options(t_fractol *f);
+int		fractol_keypress(int keycode, t_fractol *f);
+int		fractol_mousepress(int keycode, int x, int y, t_fractol *f);
+int		julia(t_fractol *f, int x);
 #endif
