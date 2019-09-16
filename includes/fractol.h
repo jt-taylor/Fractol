@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:10:50 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 12:16:49 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 16:18:39 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,7 @@ void	init_fractol_options(t_fractol *f);
 int		fractol_keypress(int keycode, t_fractol *f);
 int		fractol_mousepress(int keycode, int x, int y, t_fractol *f);
 int		julia(t_fractol *f, int x);
+void	fractol_color_default(t_fractol *f);
+int		wat_is_this_called(t_fractol *f, int x);
+int		wat2(t_fractol *f, int x);
 #endif

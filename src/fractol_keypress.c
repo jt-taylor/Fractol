@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 11:39:59 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 13:12:10 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 16:50:50 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,27 @@ static inline void	reinit_fractol_options(t_fractol *f)
 // zoom + and - are not inverses , i just don't think it's worth it to do that much more precision
 int		fractol_mousepress(int keycode, int x, int y, t_fractol *f)
 {
-	f->frac.mouse_x = x;
-	f->frac.mouse_y = y;
 	if (keycode == 0x04)
 		f->frac.zoom *= .95;
 	else if (keycode == 0x05)
 		f->frac.zoom *= 1.05;
 	else
-		;
+	{
+		f->frac.mouse_x = x;
+		f->frac.mouse_y = y;
+	}
 	reinit_fractol_options(f);
 	redraw_fractol(f);
-//	ft_printf("keycode == %X\n", keycode);
 	return (0);
 }
+
+static inline void	fractol_rand_color(t_fractol *f)
+{
+	f->color.red = rand() % 0x50;
+	f->color.green = rand() % 0x50;
+	f->color.blue = rand() % 0x50;
+}
+
 int		fractol_keypress(int keycode, t_fractol *f)
 {
 	if (keycode == 0x7b)
@@ -67,10 +75,14 @@ int		fractol_keypress(int keycode, t_fractol *f)
 		f->frac.min_irat -= .05 * (1 / f->frac.zoom);
 	else if (keycode == 0x7e)
 		f->frac.min_irat += .05 * (1 / f->frac.zoom);
+	else if (keycode == 0x0F)
+		fractol_rand_color(f);
+	else if (keycode == 0x31)
+		f->frac.zoom = 1.0;
 	else if (keycode == 0x35)
 		exit(0);
 	reinit_fractol_options(f);
 	redraw_fractol(f);
-	ft_printf("keycode == %X\n", keycode);
+//	ft_printf("keycode == %X\n", keycode);
 	return (0);
 }

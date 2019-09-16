@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 12:52:17 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 12:35:24 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 14:38:34 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdbool.h>
 
 
-static inline void	fractol_color_default(t_fractol *f)
+void	fractol_color_default(t_fractol *f)
 {
 	f->color.red = 0xff;
 	f->color.green = 0x0f;
@@ -43,7 +43,7 @@ void				draw_fractol(t_fractol *f)
 	unsigned		x;
 	int				boole;
 
-	fractol_color_default(f);
+//	fractol_color_default(f);
 	y = 0;
 	while (y < HEIGHT)
 	{
