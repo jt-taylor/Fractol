@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 12:52:17 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/14 14:36:23 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 12:35:24 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@
 static inline void	fractol_color_default(t_fractol *f)
 {
 	f->color.red = 0xff;
-	f->color.green = 0x00;
-	f->color.blue = 0x00;
+	f->color.green = 0x0f;
+	f->color.blue = 0x08;
 }
 
-/*
-** why does this only work with 500 x 500 pox ??
-*/
 void	init_fractol_options(t_fractol *f)
 {
 	f->frac.iterations = 30;
@@ -31,7 +28,9 @@ void	init_fractol_options(t_fractol *f)
 	f->frac.zoom = 1.0;
 	f->frac.min_real = -2.0;
 	f->frac.max_real = 2.0;
-	f->frac.min_irat = -1.2;
+	f->frac.min_irat = -2.0;
+	f->frac.mouse_x = WIDTH / 3;
+	f->frac.mouse_y = HEIGHT / 3;
 	f->frac.max_irat = f->frac.min_irat + (f->frac.max_real - f->frac.min_real)
 		* HEIGHT / WIDTH;
 	f->frac.re_factor = (f->frac.max_real - f->frac.min_real) / (WIDTH - 1);

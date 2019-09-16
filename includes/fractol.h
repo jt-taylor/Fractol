@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:10:50 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/14 17:42:14 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 12:16:49 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ typedef struct	s_fractal_data
 	double			z_irat;
 	double			z_2real;
 	double			z_2irat;
+	//zoom
 	double			zoom;
+	int				mouse_x;
+	int				mouse_y;
 	int		type;
 	int		current_iteration;
 	int		iterations;

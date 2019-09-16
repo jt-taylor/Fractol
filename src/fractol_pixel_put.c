@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 19:08:22 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/14 15:33:40 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 12:20:18 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ void		ft_mlx_img_pixel_put(t_fractol *f, int x_cord, int y_cord)
 	}
 	else
 	{
-		f->img.data_start[off] = f->color.blue;
-		f->img.data_start[off + 1] = f->color.green;
-		f->img.data_start[off + 2] =(char) (f->color.red - mult * f->frac.current_iteration);
+		f->img.data_start[off] = (char) (f->color.green - (mult * .7) * f->frac.current_iteration);
+
+		f->img.data_start[off + 1] = (char) (f->color.blue - (mult * .3) * f->frac.current_iteration);
+
+		f->img.data_start[off + 2] = (char) (f->color.red - mult * f->frac.current_iteration);
 	}
 }
