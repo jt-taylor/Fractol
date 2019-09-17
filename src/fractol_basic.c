@@ -6,22 +6,21 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 12:52:17 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 14:38:34 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 17:19:59 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <stdbool.h>
 
-
-void	fractol_color_default(t_fractol *f)
+void				fractol_color_default(t_fractol *f)
 {
 	f->color.red = 0xff;
 	f->color.green = 0x0f;
 	f->color.blue = 0x08;
 }
 
-void	init_fractol_options(t_fractol *f)
+void				init_fractol_options(t_fractol *f)
 {
 	f->frac.iterations = 30;
 	f->frac.current_iteration = 0;
@@ -43,11 +42,11 @@ void				draw_fractol(t_fractol *f)
 	unsigned		x;
 	int				boole;
 
-//	fractol_color_default(f);
 	y = 0;
 	while (y < HEIGHT)
 	{
-		f->frac.c_irat = f->frac.zoom * (f->frac.max_irat - (y * f->frac.ir_factor));
+		f->frac.c_irat = f->frac.zoom *
+			(f->frac.max_irat - (y * f->frac.ir_factor));
 		x = 0;
 		while (x < WIDTH)
 		{

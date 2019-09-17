@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:09:53 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 16:18:11 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 17:19:41 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **		data from outside the bounds of the array
 */
 
-char		*g_fractol_list[30] =
+char				*g_fractol_list[30] =
 {
 	"mandlebrot",
 	"julia",
@@ -27,7 +27,7 @@ char		*g_fractol_list[30] =
 	""
 };
 
-t_fractol_loops	*g_fractol_loops[] =
+t_fractol_loops		*g_fractol_loops[] =
 {
 	mandlebrot,
 	julia,
@@ -37,12 +37,6 @@ t_fractol_loops	*g_fractol_loops[] =
 	how_did_you_get_here,
 	how_did_you_get_here,
 };
-
-
-
-/*
-** make a usage message 
-*/
 
 static inline void	fractol_usage_message(void)
 {
@@ -58,17 +52,24 @@ static inline void	fractol_usage_message(void)
 
 /*
 ** The constraints are as follows:
-** • Your software should offer at least 3 different types of fractals, including the Julia
-** set and the Mandelbrot set. The third fractal (and the optional additional ones)
+** • Your software should offer at least 3 different types of fractals,
+** including the Julia
+** set and the Mandelbrot set. The third fractal (and the optional additional
+** ones)
 ** can be whatever you want.
-** • It must be possible to make the parameter of the Julia set vary only with the mouse
+** • It must be possible to make the parameter of the Julia set vary only with
+** the mouse
 ** (without clicking). For the other types of fractal, the decision is yours.
-** • The mouse wheel zooms in and out, almost infinitely (within the limits of the
+** • The mouse wheel zooms in and out, almost infinitely (within the limits of
+** the
 ** computer). This is the very principle of fractals.
-** • You must use at least a few colors to show the depth of each fractal. It’s even better
+** • You must use at least a few colors to show the depth of each fractal. It’s
+** even better
 ** if you hack away on psychedelic effects.
-** • A parameter is passed on the command line to define what type of fractal will be
-** viewed. If no parameter is provided, or if the parameter is invalid, the program
+** • A parameter is passed on the command line to define what type of fractal
+** will be
+** viewed. If no parameter is provided, or if the parameter is invalid, the
+** program
 ** displays a list of available parameters and exits properly.
 **
 **
@@ -82,11 +83,11 @@ static inline void	fractol_usage_message(void)
 ** init all of the mlx pointers
 */
 
-static void		fractol_init_mlx(t_fractol *fractol, char *window_name)
+static void			fractol_init_mlx(t_fractol *fractol, char *window_name)
 {
 	fractol->mlx.mlx_ptr = mlx_init();
-	fractol->mlx.window_ptr = mlx_new_window(fractol->mlx.mlx_ptr, WIDTH, HEIGHT,
-			window_name);
+	fractol->mlx.window_ptr = mlx_new_window(fractol->mlx.mlx_ptr,
+			WIDTH, HEIGHT, window_name);
 	fractol->img.image_ptr = mlx_new_image(fractol->mlx.mlx_ptr, WIDTH, HEIGHT);
 	fractol->img.data_start = mlx_get_data_addr(fractol->img.image_ptr,
 			&fractol->img.bpp, &fractol->img.size_line, &fractol->img.endian);
@@ -120,11 +121,10 @@ static inline int	fractol_select(char *name)
 	}
 }
 
-int		main(int ac, char **argv)
+int					main(int ac, char **argv)
 {
 	t_fractol	*fractol;
 
-	//i really don't know why it breaks but i gotta find it
 	if (!(fractol = (t_fractol *)malloc(sizeof(t_fractol) * 3)))
 		exit(3);
 	if (ac == 2)
@@ -139,7 +139,8 @@ int		main(int ac, char **argv)
 	init_fractol_options(fractol);
 	fractol_color_default(fractol);
 	draw_fractol(fractol);
-	mlx_put_image_to_window(fractol->mlx.mlx_ptr, fractol->mlx.window_ptr, fractol->img.image_ptr, 0, 0);
+	mlx_put_image_to_window(fractol->mlx.mlx_ptr, fractol->mlx.window_ptr,
+			fractol->img.image_ptr, 0, 0);
 	mlx_key_hook(fractol->mlx.window_ptr, fractol_keypress, fractol);
 	mlx_mouse_hook(fractol->mlx.window_ptr, fractol_mousepress, fractol);
 	mlx_loop(fractol->mlx.mlx_ptr);

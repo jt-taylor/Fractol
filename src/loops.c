@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 19:49:44 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 16:56:37 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 17:12:44 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		mandlebrot(t_fractol *f, int x)
 {
 	int	boole;
 
-	f->frac.c_real = f->frac.zoom *(f->frac.min_real + (x * f->frac.re_factor));
+	f->frac.c_real = f->frac.zoom * (f->frac.min_real + x * f->frac.re_factor);
 	f->frac.z_real = f->frac.zoom * f->frac.c_real;
 	f->frac.z_irat = f->frac.c_irat;
 	boole = 1;
@@ -49,7 +49,7 @@ int		julia(t_fractol *f, int x)
 {
 	int	boole;
 
-	f->frac.c_real = f->frac.zoom *(f->frac.min_real + (x * f->frac.re_factor));
+	f->frac.c_real = f->frac.zoom * (f->frac.min_real + x * f->frac.re_factor);
 	f->frac.z_real = f->frac.zoom * f->frac.c_real;
 	f->frac.z_irat = f->frac.c_irat;
 	boole = 1;
@@ -63,8 +63,10 @@ int		julia(t_fractol *f, int x)
 			boole = 0;
 			break ;
 		}
-		f->frac.z_irat = 2 * f->frac.z_real * f->frac.z_irat + (double)(f->frac.mouse_y / (double)HEIGHT);
-		f->frac.z_real = f->frac.z_2real - f->frac.z_2irat + (double)(f->frac.mouse_x / (double)WIDTH);
+		f->frac.z_irat = 2 * f->frac.z_real * f->frac.z_irat +
+			(double)(f->frac.mouse_y / (double)HEIGHT);
+		f->frac.z_real = f->frac.z_2real - f->frac.z_2irat +
+			(double)(f->frac.mouse_x / (double)WIDTH);
 		f->frac.current_iteration++;
 	}
 	return (boole);
@@ -74,7 +76,7 @@ int		wat_is_this_called(t_fractol *f, int x)
 {
 	int	boole;
 
-	f->frac.c_real = f->frac.zoom *(f->frac.min_real + (x * f->frac.re_factor));
+	f->frac.c_real = f->frac.zoom * (f->frac.min_real + x * f->frac.re_factor);
 	f->frac.z_real = f->frac.zoom * f->frac.c_real;
 	f->frac.z_irat = f->frac.c_irat;
 	boole = 1;
@@ -88,8 +90,10 @@ int		wat_is_this_called(t_fractol *f, int x)
 			boole = 0;
 			break ;
 		}
-		f->frac.z_irat = 2 * f->frac.z_real * f->frac.z_irat + (double)(234 / (double)HEIGHT);
-		f->frac.z_real = f->frac.z_2real - f->frac.z_2irat + (double)(230 / (double)WIDTH);
+		f->frac.z_irat = 2 * f->frac.z_real * f->frac.z_irat +
+			(double)(234 / (double)HEIGHT);
+		f->frac.z_real = f->frac.z_2real - f->frac.z_2irat +
+			(double)(230 / (double)WIDTH);
 		f->frac.current_iteration++;
 	}
 	return (boole);
@@ -99,7 +103,7 @@ int		wat2(t_fractol *f, int x)
 {
 	int	boole;
 
-	f->frac.c_real = f->frac.zoom *(f->frac.min_real + (x * f->frac.re_factor));
+	f->frac.c_real = f->frac.zoom * (f->frac.min_real + x * f->frac.re_factor);
 	f->frac.z_real = f->frac.zoom * f->frac.c_real;
 	f->frac.z_irat = f->frac.c_irat;
 	boole = 1;
@@ -113,8 +117,10 @@ int		wat2(t_fractol *f, int x)
 			boole = 0;
 			break ;
 		}
-		f->frac.z_irat = 2 * f->frac.z_real * f->frac.z_irat + (double)(f->frac.mouse_y / (double)HEIGHT);
-		f->frac.z_real = f->frac.z_2real - f->frac.z_2irat + (double)(f->frac.mouse_x / (double)WIDTH);
+		f->frac.z_irat = 2 * f->frac.z_real * f->frac.z_irat +
+			(double)(f->frac.mouse_y / (double)HEIGHT);
+		f->frac.z_real = f->frac.z_2real - f->frac.z_2irat +
+			(double)(f->frac.mouse_x / (double)WIDTH);
 		f->frac.current_iteration++;
 	}
 	return (boole);

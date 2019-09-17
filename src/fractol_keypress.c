@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 11:39:59 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 16:50:50 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 17:17:52 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 
 static inline void	redraw_fractol(t_fractol *f)
 {
-//	int	x = 0;
-//	int	y = 0;
-//	f->frac.current_iteration = 0;
-//	while (y++ < HEIGHT)
-//		while (x++ < WIDTH)
-//			ft_mlx_img_pixel_put(f, x, y);
 	ft_bzero(f->img.data_start, (WIDTH * HEIGHT * 4));
 	draw_fractol(f);
-	mlx_put_image_to_window(f->mlx.mlx_ptr, f->mlx.window_ptr, f->img.image_ptr, 0, 0);
+	mlx_put_image_to_window(f->mlx.mlx_ptr, f->mlx.window_ptr,
+			f->img.image_ptr, 0, 0);
 }
 
 static inline void	reinit_fractol_options(t_fractol *f)
@@ -35,8 +30,7 @@ static inline void	reinit_fractol_options(t_fractol *f)
 	f->frac.ir_factor = (f->frac.max_irat - f->frac.min_irat) / (HEIGHT - 1);
 }
 
-// zoom + and - are not inverses , i just don't think it's worth it to do that much more precision
-int		fractol_mousepress(int keycode, int x, int y, t_fractol *f)
+int					fractol_mousepress(int keycode, int x, int y, t_fractol *f)
 {
 	if (keycode == 0x04)
 		f->frac.zoom *= .95;
@@ -59,7 +53,7 @@ static inline void	fractol_rand_color(t_fractol *f)
 	f->color.blue = rand() % 0x50;
 }
 
-int		fractol_keypress(int keycode, t_fractol *f)
+int					fractol_keypress(int keycode, t_fractol *f)
 {
 	if (keycode == 0x7b)
 	{
@@ -83,6 +77,5 @@ int		fractol_keypress(int keycode, t_fractol *f)
 		exit(0);
 	reinit_fractol_options(f);
 	redraw_fractol(f);
-//	ft_printf("keycode == %X\n", keycode);
 	return (0);
 }
