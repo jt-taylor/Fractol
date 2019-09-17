@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:10:50 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 17:05:01 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 20:22:06 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "mlx.h"
+# include <math.h>
 
 /*
 ** macros
@@ -97,4 +98,8 @@ int				julia(t_fractol *f, int x);
 void			fractol_color_default(t_fractol *f);
 int				wat_is_this_called(t_fractol *f, int x);
 int				wat2(t_fractol *f, int x);
+void			redraw_fractol(t_fractol *f);
+void			reinit_fractol_options(t_fractol *f);
+int				mouse_move(int x, int y, t_fractol *f);
+
 #endif

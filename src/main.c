@@ -6,7 +6,7 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 13:09:53 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 17:19:41 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 20:27:55 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,18 @@ static inline int	fractol_select(char *name)
 	}
 }
 
+int					mouse_move(int x, int y, t_fractol *f)
+{
+	f->frac.mouse_x = x;
+	f->frac.mouse_y = y;
+	if (f->fractol_opt == 1)
+	{
+		reinit_fractol_options(f);
+		redraw_fractol(f);
+	}
+	return (0);
+}
+
 int					main(int ac, char **argv)
 {
 	t_fractol	*fractol;
@@ -142,6 +154,7 @@ int					main(int ac, char **argv)
 	mlx_put_image_to_window(fractol->mlx.mlx_ptr, fractol->mlx.window_ptr,
 			fractol->img.image_ptr, 0, 0);
 	mlx_key_hook(fractol->mlx.window_ptr, fractol_keypress, fractol);
+	mlx_hook(fractol->mlx.window_ptr, 6, 0, mouse_move, fractol);
 	mlx_mouse_hook(fractol->mlx.window_ptr, fractol_mousepress, fractol);
 	mlx_loop(fractol->mlx.mlx_ptr);
 	return (0);

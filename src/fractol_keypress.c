@@ -6,13 +6,13 @@
 /*   By: jtaylor <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 11:39:59 by jtaylor           #+#    #+#             */
-/*   Updated: 2019/09/16 17:17:52 by jtaylor          ###   ########.fr       */
+/*   Updated: 2019/09/16 20:02:14 by jtaylor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static inline void	redraw_fractol(t_fractol *f)
+void				redraw_fractol(t_fractol *f)
 {
 	ft_bzero(f->img.data_start, (WIDTH * HEIGHT * 4));
 	draw_fractol(f);
@@ -20,7 +20,7 @@ static inline void	redraw_fractol(t_fractol *f)
 			f->img.image_ptr, 0, 0);
 }
 
-static inline void	reinit_fractol_options(t_fractol *f)
+void				reinit_fractol_options(t_fractol *f)
 {
 	f->frac.iterations = 30;
 	f->frac.current_iteration = 0;
@@ -36,11 +36,8 @@ int					fractol_mousepress(int keycode, int x, int y, t_fractol *f)
 		f->frac.zoom *= .95;
 	else if (keycode == 0x05)
 		f->frac.zoom *= 1.05;
-	else
-	{
-		f->frac.mouse_x = x;
-		f->frac.mouse_y = y;
-	}
+	f->frac.mouse_x = x;
+	f->frac.mouse_y = y;
 	reinit_fractol_options(f);
 	redraw_fractol(f);
 	return (0);
